@@ -59,7 +59,7 @@ function renderSkillPair(a: SkillEntry, b?: SkillEntry): string {
   function renderOne(s: SkillEntry): string {
     return `<td class="tb2 cell ${skillClass(s.level)}" valign="top">
       <table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
-        <td class="skill"><strong class="txt3">${escapeHtml(s.name)}</strong></td>
+        <td class="skill"><span>${escapeHtml(s.name)}</span></td>
         <td valign="top"><span class="skbg"><span class="skco">${escapeHtml(s.level)}</span></span></td>
       </tr></tbody></table>
     </td>`
@@ -227,7 +227,8 @@ export function renderResumeHtml(data: ResumeData): string {
       .column .tit { width: 900px; height: 40px; color: #666666; padding: 0 20px; background-color: #f5f5f5; }
       .column .p15 { padding: 15px 0; }
       .column .p5 { display: inline-block; color: #666666; padding: 0 5px; }
-      .column .cell .skill { width: 165px; text-align: right; padding-right: 15px; }
+      .column .cell .skill { width: 165px; text-align: right; padding-right: 15px; line-height: 28px; color: #333333; }
+      .column .cell { padding: 3px 0; }
       .column .cell .skbg, .column .cell .skco { display: inline-block; width: 245px; height: 18px; line-height: 18px; font-size: 12px; color: #ffffff; vertical-align: top; margin-top: 6px; background-color: #dddddd; border-radius: 20px; }
       .column .cell .skco { width: 235px; font-style: normal; margin-top: 0; padding-left: 10px; background-color: #ff9f20; z-index: 3; }
       .column .sl .skco { width: 173px; }
