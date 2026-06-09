@@ -378,8 +378,8 @@ function removeWorkEntry2(i: number) {
               <span class="entry-label">作品 {{ i + 1 }}</span>
               <button class="del-btn" @click="removeWorkEntry2(i)">删除</button>
             </div>
-            <div class="field"><label>链接</label><input v-model="w.link" placeholder="https://" /></div>
-            <div class="field"><label>描述</label><input v-model="w.description" /></div>
+            <div class="field"><label>作品链接</label><input v-model="w.link" placeholder="https://" /></div>
+            <div class="field"><label>作品描述</label><input v-model="w.description" /></div>
           </div>
           <button class="add-btn" @click="addWorkEntry2">+ 添加作品</button>
         </div>
