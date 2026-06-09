@@ -41,6 +41,7 @@ export interface ProjectEntry {
   endDate: string
   isCurrentProject: boolean
   company: string
+  link: string
   description: string
 }
 

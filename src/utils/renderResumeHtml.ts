@@ -124,6 +124,12 @@ export function renderResumeHtml(data: ResumeData): string {
               <td valign="top" class="txt1">${escapeHtml(proj.company)}</td>
             </tr></tbody></table>
           </td></tr>` : ''}
+          ${proj.link ? `<tr><td class="tb1" colspan="2">
+            <table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
+              <td valign="top" class="keys">项目链接：</td>
+              <td valign="top" class="txt1">${escapeHtml(proj.link)}</td>
+            </tr></tbody></table>
+          </td></tr>` : ''}
           <tr><td class="tb1" colspan="2">
             <table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
               <td valign="top" class="keys">项目描述：</td>

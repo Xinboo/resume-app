@@ -44,7 +44,7 @@ function removeWorkEntry(i: number) {
 
 function addProjectEntry() {
   props.data.projectExperience.push({
-    id: crypto.randomUUID(), name: '', startDate: '', endDate: '', isCurrentProject: false, company: '', description: '',
+    id: crypto.randomUUID(), name: '', startDate: '', endDate: '', isCurrentProject: false, company: '', link: '', description: '',
   })
 }
 
@@ -301,7 +301,13 @@ function removeWorkEntry2(i: number) {
                 </div>
               </div>
             </div>
-            <div class="field"><label>所属公司</label><input v-model="proj.company" /></div>
+            <div class="field"><label>所属公司</label>
+              <select v-model="proj.company">
+                <option value="">无</option>
+                <option v-for="w in data.workExperience" :key="w.id" :value="w.company">{{ w.company || '（未填公司名）' }}</option>
+              </select>
+            </div>
+            <div class="field"><label>项目链接</label><input v-model="proj.link" /></div>
             <div class="field">
               <label>项目描述</label>
               <textarea v-model="proj.description" rows="8"></textarea>
