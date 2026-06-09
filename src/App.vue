@@ -6,7 +6,7 @@ import EditorPanel from './components/EditorPanel.vue'
 
 const { resumeData, saveToStorage } = useResumeStore()
 
-const editorWidth = ref(420)
+const editorWidth = ref(560)
 const isDragging = ref(false)
 
 function onDragStart(e: MouseEvent) {
@@ -15,7 +15,7 @@ function onDragStart(e: MouseEvent) {
   const startWidth = editorWidth.value
 
   function onMouseMove(e: MouseEvent) {
-    const delta = startX - e.clientX
+    const delta = e.clientX - startX
     editorWidth.value = Math.max(300, Math.min(800, startWidth + delta))
   }
 
@@ -34,12 +34,12 @@ function onDragStart(e: MouseEvent) {
 
 <template>
   <div class="app-layout" :class="{ dragging: isDragging }">
-    <div class="preview-pane">
-      <ResumePreview :data="resumeData" />
-    </div>
-    <div class="resize-handle" @mousedown="onDragStart"></div>
     <div class="editor-pane" :style="{ width: editorWidth + 'px' }">
       <EditorPanel :data="resumeData" @save="saveToStorage" />
+    </div>
+    <div class="resize-handle" @mousedown="onDragStart"></div>
+    <div class="preview-pane">
+      <ResumePreview :data="resumeData" />
     </div>
   </div>
 </template>
@@ -82,5 +82,6 @@ function onDragStart(e: MouseEvent) {
 .editor-pane {
   flex-shrink: 0;
   overflow: hidden;
+  height: 100vh;
 }
 </style>

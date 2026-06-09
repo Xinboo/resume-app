@@ -8,6 +8,10 @@ function nl2br(str: string): string {
   return escapeHtml(str).replace(/\n/g, '<br />')
 }
 
+function splitToTags(str: string): string {
+  return str.split(/\s+/).filter(Boolean).map(s => `<span class="tag">${escapeHtml(s)}&nbsp;</span>`).join('')
+}
+
 function computeAge(birthYear: number, birthMonth: number): number {
   const now = new Date()
   let age = now.getFullYear() - birthYear
@@ -48,7 +52,7 @@ export function renderResumeHtml(data: ResumeData): string {
         <table cellspacing="0" cellpadding="0" border="0"><tbody>
           <tr>
             <td width="52" height="52" rowspan="2" class="companyLogo">
-              <p><img src="https://img04.51jobcdn.com/im/mkt/app/51job_phone/app/homelogo/new/home_logo_default_instrumentation.png" alt="" width="48" height="48" /><i></i></p>
+              <p>${w.logo ? `<img src="${escapeHtml(w.logo)}" alt="" width="48" height="48" />` : ''}<i></i></p>
             </td>
             <td class="phd tb1 p_12">
               <strong>${escapeHtml(w.company)}</strong><span class="gray">&nbsp;（${escapeHtml(w.duration)}）</span>
@@ -279,11 +283,11 @@ export function renderResumeHtml(data: ResumeData): string {
                 <tr>
                   <td class="tb2" valign="top"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
                     <td valign="top" class="keys">期望职位：</td>
-                    <td valign="top" class="txt2">${data.jobIntention.targetPositions.map(pos => `<span class="tag">${escapeHtml(pos)}&nbsp;&nbsp;</span>`).join('')}</td>
+                    <td valign="top" class="txt2">${splitToTags(data.jobIntention.targetPositions)}</td>
                   </tr></tbody></table></td>
                   <td class="tb2" valign="top"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
                     <td valign="top" class="keys">期望城市：</td>
-                    <td valign="top" class="txt2">${data.jobIntention.targetCities.map(c => `<span class="tag">${escapeHtml(c)}&nbsp;</span>`).join('')}</td>
+                    <td valign="top" class="txt2">${splitToTags(data.jobIntention.targetCities)}</td>
                   </tr></tbody></table></td>
                 </tr>
                 <tr>
@@ -293,7 +297,7 @@ export function renderResumeHtml(data: ResumeData): string {
                   </tr></tbody></table></td>
                   <td class="tb2" valign="top"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr>
                     <td valign="top" class="keys">期望行业：</td>
-                    <td valign="top" class="txt2"><span class="tag">${escapeHtml(data.jobIntention.industry)}</span></td>
+                    <td valign="top" class="txt2">${splitToTags(data.jobIntention.industry)}</td>
                   </tr></tbody></table></td>
                 </tr>
                 <tr>

@@ -11,8 +11,8 @@ export interface PersonalInfo {
 }
 
 export interface JobIntention {
-  targetPositions: string[]
-  targetCities: string[]
+  targetPositions: string
+  targetCities: string
   salaryRange: string
   industry: string
   jobType: string
@@ -22,6 +22,7 @@ export interface JobIntention {
 
 export interface WorkEntry {
   id: string
+  logo: string
   company: string
   duration: string
   period: string

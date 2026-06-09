@@ -15,8 +15,8 @@ export function getDefaultResume(): ResumeData {
     },
     strengths: '',
     jobIntention: {
-      targetPositions: [],
-      targetCities: [],
+      targetPositions: '',
+      targetCities: '',
       salaryRange: '',
       industry: '',
       jobType: '全职',

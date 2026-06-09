@@ -5,7 +5,7 @@ import type { ResumeData, SkillLevel } from '../types/resume'
 const props = defineProps<{ data: ResumeData }>()
 const emit = defineEmits<{ save: [] }>()
 
-const activeSection = ref<string | null>('personalInfo')
+const activeSection = ref<string | null>(null)
 const isDirty = ref(false)
 
 watch(() => props.data, () => { isDirty.value = true }, { deep: true })
@@ -23,7 +23,7 @@ function toggle(section: string) {
 
 function addWorkEntry() {
   props.data.workExperience.push({
-    id: crypto.randomUUID(), company: '', duration: '', period: '',
+    id: crypto.randomUUID(), logo: '', company: '', duration: '', period: '',
     role: '', industry: '', companySize: '', companyType: '', description: '',
   })
 }
@@ -113,7 +113,14 @@ function removeWorkEntry2(i: number) {
             </div>
             <div class="field">
               <label>政治面貌</label>
-              <input v-model="data.personalInfo.politicalStatus" />
+              <select v-model="data.personalInfo.politicalStatus">
+                <option value="中共党员">中共党员</option>
+                <option value="中共预备党员">中共预备党员</option>
+                <option value="共青团员">共青团员</option>
+                <option value="民主党派人士">民主党派人士</option>
+                <option value="无党派民主人士">无党派民主人士</option>
+                <option value="普通公民">普通公民</option>
+              </select>
             </div>
           </div>
           <div class="field-row">
@@ -141,8 +148,8 @@ function removeWorkEntry2(i: number) {
         </div>
         <div v-show="activeSection === 'strengths'" class="section-body">
           <div class="field">
-            <label>个人优势（每行一条）</label>
-            <textarea v-model="data.strengths" rows="8"></textarea>
+            <label>个人优势</label>
+            <textarea v-model="data.strengths" class="auto-height"></textarea>
           </div>
         </div>
       </div>
@@ -156,12 +163,12 @@ function removeWorkEntry2(i: number) {
         <div v-show="activeSection === 'jobIntention'" class="section-body">
           <div class="field-row">
             <div class="field">
-              <label>期望职位（逗号分隔）</label>
-              <input :value="data.jobIntention.targetPositions.join('、')" @input="data.jobIntention.targetPositions = ($event.target as HTMLInputElement).value.split(/[、,，]/).map(s => s.trim()).filter(Boolean)" />
+              <label>期望职位</label>
+              <input v-model="data.jobIntention.targetPositions" />
             </div>
             <div class="field">
-              <label>期望城市（逗号分隔）</label>
-              <input :value="data.jobIntention.targetCities.join('、')" @input="data.jobIntention.targetCities = ($event.target as HTMLInputElement).value.split(/[、,，]/).map(s => s.trim()).filter(Boolean)" />
+              <label>期望城市</label>
+              <input v-model="data.jobIntention.targetCities" />
             </div>
           </div>
           <div class="field-row">
@@ -209,13 +216,37 @@ function removeWorkEntry2(i: number) {
               <div class="field"><label>公司</label><input v-model="w.company" /></div>
               <div class="field"><label>职位</label><input v-model="w.role" /></div>
             </div>
+            <div class="field">
+              <label>公司Logo</label><input v-model="w.logo" placeholder="图片URL" />
+            </div>
             <div class="field-row">
               <div class="field"><label>时间段</label><input v-model="w.period" placeholder="2021/6-至今" /></div>
               <div class="field"><label>时长</label><input v-model="w.duration" placeholder="3年9个月" /></div>
             </div>
             <div class="field-row">
               <div class="field"><label>行业</label><input v-model="w.industry" /></div>
-              <div class="field"><label>规模</label><input v-model="w.companySize" placeholder="50-150人" /></div>
+              <div class="field"><label>规模</label>
+                <select v-model="w.companySize">
+                  <option value="少于50人">少于50人</option>
+                  <option value="50-150人">50-150人</option>
+                  <option value="150-500人">150-500人</option>
+                  <option value="500-1000人">500-1000人</option>
+                  <option value="1000-5000人">1000-5000人</option>
+                  <option value="5000-10000人">5000-10000人</option>
+                  <option value="10000人以上">10000人以上</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label>公司性质</label>
+              <select v-model="w.companyType">
+                <option value="民营">民营</option>
+                <option value="国企">国企</option>
+                <option value="外企">外企</option>
+                <option value="合资">合资</option>
+                <option value="事业单位">事业单位</option>
+                <option value="上市公司">上市公司</option>
+              </select>
             </div>
             <div class="field">
               <label>工作描述</label>
@@ -404,7 +435,7 @@ function removeWorkEntry2(i: number) {
 }
 
 .section-body {
-  padding: 0 20px 16px;
+  padding: 0 8% 16px;
 }
 
 .field {
@@ -443,6 +474,12 @@ function removeWorkEntry2(i: number) {
 .field textarea {
   resize: vertical;
   min-height: 120px;
+}
+
+.field textarea.auto-height {
+  field-sizing: content;
+  min-height: 200px;
+  padding-bottom: 80px;
 }
 
 .field-row {
