@@ -14,7 +14,18 @@ function loadFromStorage(): ResumeData | null {
   }
 }
 
-const resumeData = reactive<ResumeData>(loadFromStorage() ?? getDefaultResume())
+function mergeWithDefaults(stored: ResumeData): ResumeData {
+  const defaults = getDefaultResume()
+  return {
+    ...defaults,
+    ...stored,
+    personalInfo: { ...defaults.personalInfo, ...stored.personalInfo },
+    jobIntention: { ...defaults.jobIntention, ...stored.jobIntention },
+  }
+}
+
+const stored = loadFromStorage()
+const resumeData = reactive<ResumeData>(stored ? mergeWithDefaults(stored) : getDefaultResume())
 
 export function useResumeStore() {
   function saveToStorage() {

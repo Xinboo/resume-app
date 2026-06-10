@@ -268,7 +268,7 @@ export function renderResumeHtml(data: ResumeData): string {
       <!--基本信息-->
       <table cellspacing="0" cellpadding="0" border="0" class="box1"><tbody><tr>
         <td class="hbox" align="middle">
-          <img src="https://img01.51jobcdn.com/im/2021/avatar/male/avatar_toc_male01.png" width="85" height="104" class="head" alt="头像" />
+          <img src="${escapeHtml(p.avatar)}" width="85" height="104" class="head" alt="头像" />
         </td>
         <td>
           <table cellspacing="0" cellpadding="0" border="0" class="infr"><tbody>

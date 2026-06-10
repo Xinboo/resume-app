@@ -192,6 +192,10 @@ function removeWorkEntry2(i: number) {
           <span class="arrow">›</span>
         </div>
         <div v-show="activeSection === 'personalInfo'" class="section-body">
+          <div class="field">
+            <label>头像</label>
+            <input v-model="data.personalInfo.avatar" placeholder="url / base64" />
+          </div>
           <div class="field-row">
             <div class="field">
               <label>姓名</label>
@@ -325,7 +329,7 @@ function removeWorkEntry2(i: number) {
               <div class="field"><label>职位</label><input v-model="w.role" /></div>
             </div>
             <div class="field">
-              <label>公司Logo</label><input v-model="w.logo" placeholder="URL / Base64" />
+              <label>公司Logo</label><input v-model="w.logo" placeholder="url / base64" />
             </div>
             <div class="field-row">
               <div class="field"><label>开始时间</label><input type="month" v-model="w.startDate" /></div>
@@ -428,7 +432,7 @@ function removeWorkEntry2(i: number) {
               <label>学校</label><input v-model="edu.school" />
             </div>
             <div class="field">
-              <label>学校Logo</label><input v-model="edu.logo" placeholder="URL / Base64" />
+              <label>学校Logo</label><input v-model="edu.logo" placeholder="url / base64" />
             </div>
             <div class="field-row">
               <div class="field"><label>开始时间</label><input type="month" v-model="edu.startDate" /></div>

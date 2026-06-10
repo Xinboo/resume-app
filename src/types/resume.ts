@@ -1,4 +1,5 @@
 export interface PersonalInfo {
+  avatar: string
   name: string
   gender: string
   birthYear: number
