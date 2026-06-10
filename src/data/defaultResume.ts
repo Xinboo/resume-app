@@ -10,7 +10,7 @@ export function getDefaultResume(): ResumeData {
       workYears: 0,
       phone: '',
       email: '',
-      politicalStatus: '',
+      politicalStatus: '普通公民',
       currentCity: '',
     },
     strengths: '',
