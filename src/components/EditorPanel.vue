@@ -167,7 +167,7 @@ const showDonate = ref(false)
   <div class="editor-panel">
     <div class="editor-header">
       <div class="header-left">
-        <h2>简历编辑</h2>
+        <h2>木简</h2>
         <a class="preview-link" href="#" @click.prevent="openPreview">预览</a>
       </div>
       <div class="header-right">
