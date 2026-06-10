@@ -503,7 +503,7 @@ const showDonate = ref(false)
 
     <div v-if="showDonate" class="donate-overlay" @click="showDonate = false">
       <div class="donate-modal" @click.stop>
-        <div class="donate-title">打赏支持</div>
+        <div class="donate-title">请支持一杯咖啡，感谢</div>
         <div class="donate-qr-row">
           <div class="donate-qr-item">
             <div class="donate-qr"><img src="/wechat-qr.jpg" alt="微信" /></div>
