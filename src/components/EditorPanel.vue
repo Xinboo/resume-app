@@ -159,6 +159,8 @@ function addWorkEntry2() {
 function removeWorkEntry2(i: number) {
   props.data.personalWorks.splice(i, 1)
 }
+
+const showDonate = ref(false)
 </script>
 
 <template>
@@ -488,6 +490,31 @@ function removeWorkEntry2(i: number) {
           </div>
           <button class="add-btn" @click="addWorkEntry2">+ 添加作品</button>
         </div>
+      </div>
+    </div>
+
+    <div class="editor-footer">
+      <span>v1.1.0</span>
+      <span class="dot">·</span>
+      <a href="https://github.com/xinboo/resume-app" target="_blank">GitHub</a>
+      <span class="dot">·</span>
+      <a href="#" @click.prevent="showDonate = true">打赏</a>
+    </div>
+
+    <div v-if="showDonate" class="donate-overlay" @click="showDonate = false">
+      <div class="donate-modal" @click.stop>
+        <div class="donate-title">打赏支持</div>
+        <div class="donate-qr-row">
+          <div class="donate-qr-item">
+            <div class="donate-qr"><img src="/wechat-qr.jpg" alt="微信" /></div>
+            <div class="donate-label">微信</div>
+          </div>
+          <div class="donate-qr-item">
+            <div class="donate-qr"><img src="/alipay-qr.jpg" alt="支付宝" /></div>
+            <div class="donate-label">支付宝</div>
+          </div>
+        </div>
+        <div class="donate-hint">感谢你的支持 :)</div>
       </div>
     </div>
   </div>
@@ -847,5 +874,97 @@ input[type="month"] {
 .del-btn-sm:hover {
   color: #e74c3c;
   background: #fdf0ef;
+}
+
+.editor-footer {
+  padding: 10px 8%;
+  text-align: center;
+  font-size: 12px;
+  color: #bbb;
+  border-top: 1px solid #f0f0f0;
+  flex-shrink: 0;
+}
+
+.editor-footer .dot {
+  margin: 0 6px;
+}
+
+.editor-footer a {
+  color: #999;
+  text-decoration: none;
+}
+
+.editor-footer a:hover {
+  color: #3498db;
+}
+
+.donate-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.donate-modal {
+  background: #fff;
+  border-radius: 10px;
+  padding: 28px 36px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.donate-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.donate-qr-row {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.donate-qr-item {
+  text-align: center;
+}
+
+.donate-qr {
+  width: 220px;
+  height: 220px;
+  background: #f5f5f5;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 14px;
+}
+
+.donate-qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.donate-label {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+.donate-hint {
+  font-size: 13px;
+  color: #999;
 }
 </style>
