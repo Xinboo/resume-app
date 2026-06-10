@@ -72,6 +72,14 @@ function exportHtml() {
   showMenu.value = false
 }
 
+function resetData() {
+  if (confirm('确定要重置所有数据吗？')) {
+    localStorage.removeItem('resume-data')
+    location.reload()
+  }
+  showMenu.value = false
+}
+
 function exportPdf() {
   const html = renderResumeHtml(props.data)
   const iframe = document.createElement('iframe')
@@ -169,6 +177,7 @@ function removeWorkEntry2(i: number) {
             <div class="menu-item" @click="importJson">导入 JSON</div>
             <div class="menu-item" @click="exportHtml">导出 HTML</div>
             <div class="menu-item" @click="exportPdf">导出 PDF</div>
+            <div class="menu-item menu-item-danger" @click="resetData">重置</div>
           </div>
         </div>
         <input ref="fileInputRef" type="file" accept=".json" style="display:none" @change="onFileSelected" />
@@ -590,6 +599,9 @@ function removeWorkEntry2(i: number) {
   background: #f0f7fd;
   color: #3498db;
 }
+
+.menu-item-danger { color: #e74c3c; }
+.menu-item-danger:hover { background: #fdf0ef; color: #e74c3c; }
 
 
 .sections {
