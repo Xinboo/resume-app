@@ -274,7 +274,7 @@ export function renderResumeHtml(data: ResumeData): string {
           <table cellspacing="0" cellpadding="0" border="0" class="infr"><tbody>
             <tr><td colspan="2" class="name">${escapeHtml(p.name)}</td></tr>
             <tr><td valign="top" colspan="3"><p>
-              <img class="vam" src="https://img01.51jobcdn.com/im/2016/resume/y4.png" width="20" height="20" />
+              <img class="vam" src="/icon-person.png" width="20" height="20" />
               ${escapeHtml(p.gender)} <span class="p5">|</span> ${age} 岁 (${p.birthYear}/${String(p.birthMonth).padStart(2, '0')})
               <span class="p5">|</span> ${p.workYears}年工作经验
               <span class="p5">|</span> ${escapeHtml(p.politicalStatus)}
@@ -282,11 +282,11 @@ export function renderResumeHtml(data: ResumeData): string {
             </p></td></tr>
             <tr>
               <td valign="top">
-                <img class="vam" src="https://img01.51jobcdn.com/im/2016/resume/y2.png" width="20" height="20" />${escapeHtml(p.phone)}
+                <img class="vam" src="/icon-phone.png" width="20" height="20" />${escapeHtml(p.phone)}
               </td>
               <td valign="top">
                 <table cellspacing="0" cellpadding="0" border="0" class="email"><tbody><tr>
-                  <td valign="top" width="25"><img class="vam" src="https://img01.51jobcdn.com/im/2016/resume/y3.png" width="20" height="20" /></td>
+                  <td valign="top" width="25"><img class="vam" src="/icon-email.png" width="20" height="20" /></td>
                   <td valign="top" class="txt4">${escapeHtml(p.email)}</td>
                 </tr></tbody></table>
               </td>
