@@ -189,7 +189,7 @@ export function renderResumeHtml(data: ResumeData): string {
       .chead { width: 1002px; }
       .chead .logo { width: 698px; height: 90px; }
       .chead .txt { width: 152px; height: 90px; }
-      .column { width: 1002px; line-height: 28px; border: 1px solid #dedede; }
+      .column { width: 1002px; line-height: 28px; }
       .column .hbox { width: 185px; height: 154px; }
       .column .head { display: block; background-color: #fafafa; }
       .column .box { width: 100%; background-color: #ffffff; border-top: 2px solid #f2f3f5; }
